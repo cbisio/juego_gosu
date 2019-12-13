@@ -8,14 +8,17 @@ class Ventana < Gosu::Window
   def initialize
     super 640, 480, false
     self.caption = "Juego Arkanoid"
-    @bloque1 = Bloque.new(self, 20,100)
-    @bloque2 = Bloque.new(self, 110,100)
-    @bloque3 = Bloque.new(self, 200,100)
-    @bloque4 = Bloque.new(self, 290,100)
-    @bloques = [@bloque1, @bloque2, @bloque3, @bloque4]
+    crear_bloques
     @paddle = Paddle.new(330, 450, self)
     @pelota = Pelota.new(@paddle.x, @paddle.y, self)
     @font = Gosu::Font.new(20)
+  end
+
+  def crear_bloques
+
+    @bloques = []
+    4.times { |i| @bloques.push(Bloque.new(self, 165*i,100)) }
+
   end
 
   def draw
