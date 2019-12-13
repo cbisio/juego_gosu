@@ -61,7 +61,7 @@ class Paddle < Entity
 
   def collides? ball
     ball.x < x+width && ball.x+ball.width > x &&
-      ball.y < y+height && ball.y+ball.height > y
+    ball.y < y+height && ball.y+ball.height > y
   end
 
   def update
