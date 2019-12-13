@@ -7,7 +7,7 @@ class Bloque
     def initialize(window,x,y)
         @x = x
         @y = y
-       @image = Gosu::Image.new(window, "cpeque.png", true)
+       @image = Gosu::Image.new(window, "ball.png", true)
      end
 
      def draw()
