@@ -30,7 +30,7 @@ class Pelota < Entidad
     end
   end
 
-      def collect_blocks(bloques)
-        bloques.reject! { |bloque| Gosu.distance(@x, @y, bloque.x, bloque.y) < 35 }
-      end
+  def collect_blocks(bloques)
+    bloques.reject! { |bloque| bloque.collides? (self) }
   end
+end
