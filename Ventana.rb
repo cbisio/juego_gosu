@@ -34,7 +34,7 @@ class Ventana < Gosu::Window
   def update
     @pelota.update
     @pelota.collect_blocks(@bloques)
-    @paddle.update
+
 
     if button_down? Gosu::KbRight and @paddle.x+@paddle.width<640
       @paddle.move_right()
@@ -45,6 +45,11 @@ class Ventana < Gosu::Window
     if @paddle.collides?(@pelota)
       @pelota.vx *= 1.1
       @pelota.vy *= 1.1
+      if @bloques.length == 0
+        crear_bloques
+        @pelota.vx *= 1.25
+        @pelota.vy *= 1.25
+      end
     end
     if @pelota.y > 640 and button_down? Gosu::KB_SPACE
       @pelota.reset @paddle.x, @paddle.y

@@ -17,7 +17,8 @@ class Pelota < Entidad
   def reset x, y
     @x = x
     @y = y-25
-    @vx = @vy = -2
+    @vx = @vx * -0.75
+    @vy = @vy * -0.75
   end
 
   def update
