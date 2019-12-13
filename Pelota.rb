@@ -4,17 +4,17 @@ require './Entidad'
 class Pelota < Entidad
   attr_accessor :vx, :vy
 
-  def initialize window
+  def initialize x, y, window
     @window = window
     @image = Gosu::Image.new(window, "ball.png", true)
-    super 300, 300, @image
-    reset
+    super x, y-25, @image
+    @vx = @vy = -2
   end
 
-  def reset
-    @x = @window.width/2-width/2
-    @y = @window.height/2-height/2
-    @vx = @vy = 2
+  def reset x, y
+    @x = x
+    @y = y-25
+    @vx = @vy = -2
   end
 
   def update
