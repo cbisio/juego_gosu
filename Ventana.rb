@@ -1,7 +1,8 @@
 require 'gosu'
 require './Pelota'
 require './Bloque'
- 
+
+
 class Ventana < Gosu::Window
   def initialize
     super 640, 480, false
