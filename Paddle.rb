@@ -1,12 +1,14 @@
-class Paddle < Entity
+require './Entidad'
+
+class Paddle < Entidad
     attr_accessor :up, :down, :score
 
-    def initialize x, y, sprite
-        super
-        @x = x
-        @y = y
+    def initialize x, y, window
+        @image = Gosu::Image.new(window, "paddle.png", true)
+        
+        super x, y, @image
         @score = 0
-        @image = Gosu::Image.new(window, "cpeque.png", true)
+        
     end
     def draw()
         @image.draw(@x, @y, 0)
