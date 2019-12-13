@@ -21,10 +21,17 @@ class Ventana < Gosu::Window
     @bloques.each { |bloque| bloque.draw }
     @paddle.draw
   end
- 
+
   def update
     @pelota.update
     @pelota.collect_blocks(@bloques)
+    @paddle.update
+
+    if button_down? Gosu::KbRight
+      @paddle.move_right()
+    elsif button_down? Gosu::KbLeft
+      @paddle.move_left()
+    end
 
     if @paddle.collides?(@pelota)
       @pelota.vy = -@pelota.vy
@@ -34,21 +41,4 @@ class Ventana < Gosu::Window
 
   end
 
-  def button_right id
-    case id
-    when Gosu::KbQ
-      @paddle.right = true
-    when Gosu::KbA
-      @paddle.left = true
-    end
-  end
-
-  def button_left id
-    case id
-    when Gosu::KbQ
-      @paddle.right = false
-    when Gosu::KbA
-      @paddle.left = false
-    end
-  end
 end
