@@ -10,6 +10,7 @@ class Bloque
       @image = Gosu::Image.new(window, "brick.png", true)
     end
 
+
     def draw()
       @image.draw(@x, @y, 0)
     end
