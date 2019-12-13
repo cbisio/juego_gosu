@@ -30,9 +30,9 @@ class Ventana < Gosu::Window
     @pelota.collect_blocks(@bloques)
     @paddle.update
 
-    if button_down? Gosu::KbRight
+    if button_down? Gosu::KbRight and @paddle.x+@paddle.width<640
       @paddle.move_right()
-    elsif button_down? Gosu::KbLeft
+    elsif button_down? Gosu::KbLeft and @paddle.x>0
       @paddle.move_left()
     end
 
