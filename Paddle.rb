@@ -1,4 +1,6 @@
-class Paddle < Entity
+require './Entidad'
+
+class Paddle < Entidad
     attr_accessor :up, :down, :score
 
     def initialize x, y, sprite

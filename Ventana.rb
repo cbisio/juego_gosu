@@ -1,6 +1,7 @@
 require 'gosu'
 require './Pelota'
 require './Bloque'
+require './Paddle'
  
 class Ventana < Gosu::Window
   def initialize

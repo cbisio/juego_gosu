@@ -18,4 +18,6 @@ class Entidad
     def draw
       @sprite.draw x, y, 0
     end
+
+
   end
