@@ -25,7 +25,7 @@ class Pelota < Entidad
       @vx = -@vx
     end
 
-    if @y < 0 || @y > @window.height-height
+    if @y < 0 
       @vy = -@vy
     end
   end
