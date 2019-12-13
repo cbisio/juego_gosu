@@ -17,7 +17,7 @@ class Ventana < Gosu::Window
   end
 
   def draw
-    @player.draw
+    @pelota.draw
     @bloques.each { |bloque| bloque.draw }
     @paddle.draw
   end
