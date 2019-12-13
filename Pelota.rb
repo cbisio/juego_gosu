@@ -3,6 +3,7 @@ require './Entidad'
 
 class Pelota < Entidad
   attr_accessor :vx, :vy
+  attr_reader :score
 
   def initialize x, y, window
     @window = window

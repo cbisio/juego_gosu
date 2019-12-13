@@ -2,7 +2,10 @@ require 'gosu'
 require './Pelota'
 require './Bloque'
 require './Paddle'
- 
+
+module ZOrder
+  BACKGROUND, STARS, PLAYER, UI = *0..3
+end
 
 class Ventana < Gosu::Window
   def initialize
@@ -25,7 +28,7 @@ class Ventana < Gosu::Window
     @pelota.draw
     @bloques.each { |bloque| bloque.draw }
     @paddle.draw
-    
+    @font.draw_text("Score: #{@pelota.score}", 10, 10, ZOrder::UI, 1.0, 1.0, Gosu::Color::YELLOW)
   end
 
   def update
