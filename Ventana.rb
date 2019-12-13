@@ -12,6 +12,7 @@ class Ventana < Gosu::Window
     @bloque3 = Bloque.new(self, 200,100)
     @bloque4 = Bloque.new(self, 290,100)
     @bloques = [@bloque1, @bloque2, @bloque3, @bloque4]
+    @paddle = Paddle.new(self, 200, 0)
   end
 
   def draw
