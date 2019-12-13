@@ -15,12 +15,14 @@ class Ventana < Gosu::Window
     @bloques = [@bloque1, @bloque2, @bloque3, @bloque4]
     @paddle = Paddle.new(330, 450, self)
     @pelota = Pelota.new(@paddle.x, @paddle.y, self)
+    @font = Gosu::Font.new(20)
   end
 
   def draw
     @pelota.draw
     @bloques.each { |bloque| bloque.draw }
     @paddle.draw
+    
   end
 
   def update

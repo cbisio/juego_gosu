@@ -9,6 +9,8 @@ class Pelota < Entidad
     @image = Gosu::Image.new(window, "ball.png", true)
     super x, y-25, @image
     @vx = @vy = -2
+    @score = 0
+    @beep = Gosu::Sample.new("beep.wav")
   end
 
   def reset x, y
@@ -31,6 +33,12 @@ class Pelota < Entidad
   end
 
   def collect_blocks(bloques)
-    bloques.reject! { |bloque| bloque.collides? (self) }
+    bloques.reject! do |bloque| 
+      if bloque.collides? (self)
+        @score += 100 
+        @beep.play
+        @vy = -@vy
+      end
+    end
   end
 end
