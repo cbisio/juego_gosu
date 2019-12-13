@@ -5,7 +5,7 @@ require './Bloque'
 class Ventana < Gosu::Window
   def initialize
     super 640, 480, false
-    self.caption = "Mi primer juego"
+    self.caption = "Juego Arkanoid"
     @player = Jugador.new(self)
     @bloque1 = Bloque.new(self, 100,20)
     @bloque2 = Bloque.new(self, 100,200)
