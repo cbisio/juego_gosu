@@ -7,18 +7,16 @@ class Ventana < Gosu::Window
     super 640, 480, false
     self.caption = "Juego Arkanoid"
     @player = Jugador.new(self)
-    @bloque1 = Bloque.new(self, 100,20)
-    @bloque2 = Bloque.new(self, 100,200)
-    @bloque3 = Bloque.new(self, 100,110)
-    @bloque4 = Bloque.new(self, 100,290)
+    @bloque1 = Bloque.new(self, 20,100)
+    @bloque2 = Bloque.new(self, 110,100)
+    @bloque3 = Bloque.new(self, 200,100)
+    @bloque4 = Bloque.new(self, 290,100)
+    @bloques = [@bloque1, @bloque2, @bloque3, @bloque4]
   end
 
   def draw
     @player.draw
-    @bloque1.draw
-    @bloque2.draw
-    @bloque3.draw
-    @bloque4.draw
+    @bloques.each { |bloque| bloque.draw }
   end
  
   def update
@@ -31,5 +29,6 @@ class Ventana < Gosu::Window
     elsif button_down? Gosu::KbDown
       @player.move_down
     end
+    @player.collect_blocks(@bloques)
   end
 end
