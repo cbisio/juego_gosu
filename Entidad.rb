@@ -20,8 +20,17 @@ class Entidad
     end
 
     def collides? ball
-        ball.x < @x+width && ball.x+ball.width > @x &&
-          ball.y < @y+height && ball.y+ball.height > @y
+        @auxx= ball.x < @x+width && ball.x+ball.width > @x
+        @auxy= ball.y < @y+height && ball.y+ball.height > @y
+        @aux = @auxx && @auxy
+
+        if @aux && @auxx 
+          ball.vy = -ball.vy
+        elsif @aux && @auxy
+          ball.vx = -ball.vx
+        end
+        
+        return @aux
     end
 
 

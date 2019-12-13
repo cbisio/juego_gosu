@@ -40,7 +40,6 @@ class Ventana < Gosu::Window
     end
 
     if @paddle.collides?(@pelota)
-      @pelota.vy = -@pelota.vy
       @pelota.vx *= 1.1
       @pelota.vy *= 1.1
     end

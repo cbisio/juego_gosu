@@ -37,7 +37,6 @@ class Pelota < Entidad
       if bloque.collides? (self)
         @score += 100 
         @beep.play
-        @vy = -@vy
       end
     end
   end

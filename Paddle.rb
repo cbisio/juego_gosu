@@ -14,11 +14,6 @@ class Paddle < Entidad
         @image.draw(@x, @y, 0)
     end
 
-    def collides? pelota
-        pelota.x < x+width && pelota.x+pelota.width > x &&
-        pelota.y < y+height && pelota.y+pelota.height > y
-    end
-
     def move_right()
         @x += 2.5
     end
