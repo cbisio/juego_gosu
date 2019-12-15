@@ -19,19 +19,17 @@ class Entidad
       @sprite.draw x, y, 0
     end
 
+   
     def collides? ball
-        @auxx= ball.x < @x+width && ball.x+ball.width > @x
-        @auxy= ball.y < @y+height && ball.y+ball.height > @y
-        @aux = @auxx && @auxy
-
-        if @aux && @auxx 
+        @aux = ball.x < @x+width && ball.x+ball.width > @x && ball.y < @y+height && ball.y+ball.height > @y
+        if @aux
           ball.vy = -ball.vy
-        elsif @aux && @auxy
-          ball.vx = -ball.vx
         end
-        
+         
         return @aux
     end
 
+  
 
-  end
+
+end
