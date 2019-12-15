@@ -20,7 +20,9 @@ class Ventana < Gosu::Window
   def crear_bloques
 
     @bloques = []
-    4.times { |i| @bloques.push(Bloque.new(self, 165*i,100)) }
+    8.times { |i| @bloques.push(Bloque.new(self, 82*i,80)) }
+    7.times { |i| @bloques.push(Bloque.new(self, 40+82*i,110)) }
+
 
   end
 
@@ -28,7 +30,7 @@ class Ventana < Gosu::Window
     @pelota.draw
     @bloques.each { |bloque| bloque.draw }
     @paddle.draw
-    @font.draw_text("Score: #{@pelota.score}", 10, 10, ZOrder::UI, 1.0, 1.0, Gosu::Color::YELLOW)
+    @font.draw_text("SCORE: #{@pelota.score}", 10, 10, ZOrder::UI, 1.0, 1.0, Gosu::Color::YELLOW)
   end
 
   def update
