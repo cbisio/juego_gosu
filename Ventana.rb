@@ -1,35 +1,62 @@
 require 'gosu'
-require './Jugador'
+require './Pelota'
 require './Bloque'
- 
+require './Paddle'
+
+module ZOrder
+  BACKGROUND, STARS, PLAYER, UI = *0..3
+end
+
 class Ventana < Gosu::Window
   def initialize
     super 640, 480, false
-    self.caption = "Mi primer juego"
-    @player = Jugador.new(self)
-    @bloque1 = Bloque.new(self, 100,20)
-    @bloque2 = Bloque.new(self, 100,200)
-    @bloque3 = Bloque.new(self, 100,110)
-    @bloque4 = Bloque.new(self, 100,290)
+    self.caption = "Juego Arkanoid"
+    crear_bloques
+    @paddle = Paddle.new(330, 450, self)
+    @pelota = Pelota.new(@paddle.x, @paddle.y, self)
+    @font = Gosu::Font.new(20)
+  end
+
+  def crear_bloques
+
+    @bloques = []
+    8.times { |i| @bloques.push(Bloque.new(self, 82*i,80)) }
+    7.times { |i| @bloques.push(Bloque.new(self, 40+82*i,110)) }
+
+
   end
 
   def draw
-    @player.draw
-    @bloque1.draw
-    @bloque2.draw
-    @bloque3.draw
-    @bloque4.draw
+    @pelota.draw
+    @bloques.each { |bloque| bloque.draw }
+    @paddle.draw
+    @font.draw_text("SCORE: #{@pelota.score}", 10, 10, ZOrder::UI, 1.0, 1.0, Gosu::Color::YELLOW)
   end
- 
+
   def update
-    if button_down? Gosu::KbRight
-      @player.move_right
-    elsif button_down? Gosu::KbLeft
-      @player.move_left
-    elsif button_down? Gosu::KbUp
-      @player.move_up
-    elsif button_down? Gosu::KbDown
-      @player.move_down
+    @pelota.update
+    @pelota.collect_blocks(@bloques)
+
+
+    if button_down? Gosu::KbRight and @paddle.x+@paddle.width<640
+      @paddle.move_right()
+    elsif button_down? Gosu::KbLeft and @paddle.x>0
+      @paddle.move_left()
     end
+
+    if @paddle.collides?(@pelota)
+      @pelota.vx *= 1.1
+      @pelota.vy *= 1.1
+      if @bloques.length == 0
+        crear_bloques
+        @pelota.vx *= 1.25
+        @pelota.vy *= 1.25
+      end
+    end
+    if @pelota.y > 640 and button_down? Gosu::KB_SPACE
+      @pelota.reset @paddle.x, @paddle.y
+    end
+
   end
+
 end
