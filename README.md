@@ -18,7 +18,7 @@ $ gem install gosu
 ### Instrucciones
 Para empezar, ejecute `$ ruby Lanzar_Juego.rb`
 
-Para moverse, utilice las flechas izquierda(⬅) y derecha (⮕)
+Para moverse, utilice las flechas izquierda (←) y derecha (→)
 
 Si se cae la pelota y quiere seguir jugando, pulsa espacio.
 
@@ -43,7 +43,7 @@ $ gem install gosu
 ### Instructions
 To start, execute `$ ruby Lanzar_Juego.rb`
 
-To move, use the left (⬅) and right (⮕) arrows
+To move, use the left (←) and right (→) arrows
 
 If the ball falls and you want to continue playing, press space.
 
